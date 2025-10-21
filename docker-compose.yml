@@ -6,16 +6,16 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      - data_container
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://data_container:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-  db:
+  data_container:
     image: 'postgres'
-    container_name: db
+    container_name: data_container
     ports:
       - "5432:5432"
     environment:
